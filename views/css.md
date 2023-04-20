@@ -11,3 +11,8 @@
 * px绝对单位,像素
 * em相对单位,相对于上下文元素大小,默认1em=16px
 * rem根目录单位,相对于根元素大小,html的大小,默认1rem=16px
+
+### css3新属性
+* boder-radius,box-shadow,text-shadow
+* transform,2D3D转换，animation动画
+* 新增伪类，比如常用的nth-child()
