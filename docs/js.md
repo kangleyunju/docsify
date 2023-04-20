@@ -17,6 +17,6 @@ function add(){
 	}
 	return inner
 }
-add(1)(2)(3)(4)//10
-add(1,2)(3)(4)//10
+parseInt(add(1,2)(3)(4))//10
+parseInt(add(1,2)(3)(4))//10
 ```
