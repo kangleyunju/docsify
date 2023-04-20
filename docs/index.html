@@ -18,9 +18,10 @@
 		<script src="//cdn.jsdelivr.net/npm/docsify-edit-on-github"></script>
 		<script>
 			window.$docsify = {
-				basePath: '/', // 资源相对路径
+				basePath: '', // 资源相对路径
 				name: '前端面试题', // 文档标题，会显示在侧边栏顶部
 				nameLink: '/', // 点击文档标题后的跳转地址
+				subMaxLevel: 3, //显示条目的多级标题
 				repo: 'kangleyunju/docsify', // 有repo属性则右上角会展示github图标，点击可进入
 				loadSidebar: true, // 加载侧边栏
 				externalLinkTarget: '_blank', // 外部链接的打开方式，默认_blank
@@ -29,6 +30,7 @@
 				coverpage: true, // 展示封面
 				notFoundPage: true, // 在找不到指定页面时加载_404.md
 				auto2top: true, // 切换页面后是否自动跳转到页面顶部
+				topMargin: 0, //顶部间距
 				search: { // 搜索插件配置
 					paths: 'auto',
 					placeholder: '🔍 搜索',
