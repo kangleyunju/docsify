@@ -1,8 +1,5 @@
 ### 函数柯里化
-#### 定义
 函数里面返回函数，从而做到参数复用的目的
-
-#### 例子
 ```
 function add(){
 	let args = Array.prototype.slice.call(arguments);
@@ -21,25 +18,19 @@ parseInt(add(1,2)(3)(4))//10
 parseInt(add(1,2)(3)(4))//10
 ```
 ### js数据类型
-#### 基本数据类型
-* string
-* number
-* boolen
-* undefined
-* null
+* 基本数据类型 string，number，boolen，undefined，null
+* 复杂数据类型 object
+* 新增类型 Symbol，bigint
 
-#### 复杂数据类型
-* object
-
-#### 新增类型
-* Symbol 本质上是一种唯一标识符，可用作对象的唯一属性名
-* bigint 大数字
 ```
+//Symbol 本质上是一种唯一标识符，可用作对象的唯一属性名
+//bigint 大数字
 console.log(typeof(9007199254740992n))//bigint
 ```
 
 ### 判断js数据类型
-#### typeof
+* typeof
+
 ```
 typeof([])//object
 typeof(null)//object
@@ -48,24 +39,27 @@ typeof([1,2,3])//object
 typeof(undefined)//undefined
 typeof(null)//object
 ```
-#### instanceof 
+* instanceof 
+
 ```
 [] instanceof Array; // true
 '123' instanceof String //false 简单数据类型不能直接判断
 new String('123') instanceof String//true
 ```
-#### constructor 
+* constructor 
+
 ```
 console.log([1,2,3].constructor==Array)
 ```
-#### Object.prototype.toString.call
+* Object.prototype.toString.call
+
 ```
 Object.prototype.toString.call(1)
 ```
 
 ### js循环
 
-* for和for of只能循环数组
+* for，for of，forEach只能循环数组
 * for in 可以循环对象object
 * map用于改造数组，可以return返回值
 * some返回一个boolean，判断是否有元素是否符合条件，数组里面所有的元素有一个符合条件就返回true

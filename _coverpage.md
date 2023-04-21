@@ -1,3 +1,4 @@
+![logo](img/icon.svg)
 # 前端面试题 <small>1.0.0</small>
 - 使用docsify搭建的前端面试题文档
 

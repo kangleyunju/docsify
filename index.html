@@ -5,7 +5,7 @@
 		<title>前端面试题</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta name="description" content="Description">
-		<link rel="icon" type="image/x-icon" href="./img/vite.svg" />
+		<link rel="icon" type="image/x-icon" href="./img/icon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 		<!-- vue主题样式 -->
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
@@ -24,14 +24,15 @@
 				nameLink: '', // 点击文档标题后的跳转地址
 				subMaxLevel: 3, //显示条目的多级标题
 				repo: 'kangleyunju/docsify', // 有repo属性则右上角会展示github图标，点击可进入
-				loadSidebar: true, // 加载侧边栏
 				externalLinkTarget: '_blank', // 外部链接的打开方式，默认_blank
 				cornerExternalLinkTarget: '_blank', // 右上角链接的打开方式。默认为 _blank
 				routerMode: 'hash', // 路由方式 默认hash
+				loadSidebar: true, // 加载侧边栏
 				coverpage: true, // 展示封面
 				notFoundPage: true, // 在找不到指定页面时加载_404.md
 				auto2top: true, // 切换页面后是否自动跳转到页面顶部
 				topMargin: 10, //顶部间距
+				formatUpdated: '{YYYY}/{MM}/{DD} {HH}:{mm}:{ss}',
 				search: { // 搜索插件配置
 					paths: 'auto',
 					placeholder: '🔍 搜索',
@@ -57,38 +58,41 @@
 						}
 					})
 				],
+				alias: {
+					'/.*/_sidebar.md': '/_sidebar.md'
+				},
 				themeColor: "#42b983", // 暗黑模式主题色
 				darklightTheme: {
 					siteFont: "PT Sans",
 					defaultTheme: 'dark',
 					codeFontFamily: 'Roboto Mono, Monaco, courier, monospace',
-					bodyFontSize: '17px',
+					bodyFontSize: '16px',
 					dark: {
-						accent: '#42b983',
-						toogleBackground: '#ffffff',
-						background: '#091a28',
-						textColor: '#b4b4b4',
-						codeTextColor: '#ffffff',
-						codeBackgroudColor: '#0e2233',
-						borderColor: '#0d2538',
+						accent: '#42b983', //目录选中颜色
+						sidebarSublink: '#dddddd', //目录默认颜色
+						toogleBackground: '#fff',
+						background: '#091a28', //背景色
+						textColor: '#cccccc', //文档默认颜色
+						codeTextColor: '#bbbbbb', //代码块颜色
+						codeBackgroudColor: '#0e2233', //代码块背景色
+						borderColor: '#0d2538', //侧边栏边颜色
 						blockQuoteColour: '#858585',
 						highlightColor: '#d22778',
-						sidebarSublink: '#b4b4b4',
 						codeTypeColor: '#ffffff',
 						coverBackground: 'linear-gradient(to left bottom, hsl(118, 100%, 85%) 0%,hsl(181, 100%, 85%) 100%)',
 						toogleImage: 'url(https://cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/icons/sun.svg)'
 					},
 					light: {
-						accent: '#42b983',
+						accent: '#42b983', //目录选中颜色
+						sidebarSublink: '#333333', //目录默认颜色
 						toogleBackground: '#091a28',
-						background: '#ffffff',
-						textColor: '#34495e',
-						codeTextColor: '#525252',
-						codeBackgroudColor: '#f8f8f8',
-						borderColor: 'rgba(0, 0, 0, 0.07)',
+						background: '#ffffff', //背景色
+						textColor: '#444444', //文档默认颜色
+						codeTextColor: '#555555', //代码块颜色
+						codeBackgroudColor: '#f8f8f8', //代码块背景色
+						borderColor: 'rgba(0, 0, 0, 0.07)', //侧边栏边颜色
 						blockQuoteColor: '#858585',
 						highlightColor: '#d22778',
-						sidebarSublink: '#b4b4b4',
 						codeTypeColor: '#091a28',
 						coverBackground: 'linear-gradient(to left bottom, hsl(118, 100%, 85%) 0%,hsl(181, 100%, 85%) 100%)',
 						toogleImage: 'url(https://cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/icons/moon.svg)'
