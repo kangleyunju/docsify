@@ -11,6 +11,23 @@
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
 		<!-- 暗黑主题插件样式 -->
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css" title="docsify-darklight-theme" type="text/css" />
+		<style>
+			::-webkit-scrollbar {
+				height: 6px;
+				width: 6px;
+			}
+			::-webkit-scrollbar-thumb {
+				background: #d7d7d7;
+				border-radius: 10px;
+			}
+			::-webkit-scrollbar-track {
+				background-color: #f2f2f2;
+			}
+			* {
+				scrollbar-color: #d7d7d7 #f2f2f2;
+				scrollbar-width: thin;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="app">loading...</div>
@@ -66,7 +83,7 @@
 					siteFont: "PT Sans",
 					defaultTheme: 'dark',
 					codeFontFamily: 'Roboto Mono, Monaco, courier, monospace',
-					bodyFontSize: '16px',
+					bodyFontSize: '17px',
 					dark: {
 						accent: '#42b983', //目录选中颜色
 						sidebarSublink: '#dddddd', //目录默认颜色

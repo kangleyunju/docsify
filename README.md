@@ -36,3 +36,8 @@ docsify init
 ```
 docsify serve -p 3000
 ```
+* 本地预览
+
+```
+http://localhost:3000
+```
