@@ -75,3 +75,8 @@
 2. js隔离：import-html-entry,为每个子应用生成一个window的代理对象,防止子应用js全局污染
 3. css隔离：给每个根节点添加一个特殊属性,类似于scoped属性
 4. 应用通信：全局的globalState对象用来保存全局变量,通过setGlobalState修改变量,onGlobalStateChange监听变量
+
+### vite和webpack的区别
+1. webpack：所有模块都进行编译
+2. vite：启动的时候不需要打包，因为浏览器本身支持ES Modules，碰到一个impiort就会发送一个http请求去加载文件,并在后端进行简单的分解和整合返回给浏览器,vite在整个过程中没有对文件进行编译打包,真正做到按需加载，底层上是基于es build进行预构建的，es build是通过go语言编写的，比js快
+

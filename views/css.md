@@ -53,10 +53,16 @@ BFC就是Block Formatting Context的缩写，当元素开启BFC属性之后，�
 * vh,vw
 
 
-### 当li{display:inline-block}，li与li之间有看不见的空白间隔是什么原因引起的，有什么解决的办法
-* 原因：li换行会产生间隔
+### li与li之间有看不见的间隔
+* 原因：当li{display:inline-block}，li换行会产生间隔
 * 解决：直接并排去掉间隙
 ```
+//有间隙
+<ul>
+	<li>1</li>
+	<li>2</li>
+</ul>
+//无间隙
 <ul>
 <li>1</li><li>2</li>
 </ul>

@@ -10,3 +10,16 @@
 ### hooks
 * 16.8加入的,为了解决代码复用难的问题,使function组件可以管理state和生命周期
 * useState,useRouter等
+
+### 纯函数
+一个函数的返回结果只依赖于它的参数，并且在执行的过程中没有副作用，我们就把该函数称作纯函数 
+```
+//非纯函数
+function  add ( a,  b ){
+	console.log( a + b*Math.random() )
+}
+//纯函数
+function  add ( a,  b ){
+	return  a + b*0.5
+}
+```
