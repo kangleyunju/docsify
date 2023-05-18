@@ -1,6 +1,8 @@
 ### Vue2和vue3的区别
-* vue2使用到object.definepropoty， 通过遍历每一层的属性实现监听，直接改动原始对象，通过get和set函数，来设置和读取属性，但是不能监听对象新增和删除属性
-* vue3使用proxy， new proxy()，监听的是整个整个对象，产生的是一个新的对象
+1. vue2使用到object.definepropoty， 通过遍历每一层的属性实现监听，直接改动原始对象，通过get和set函数，来设置和读取属性，但是不能监听对象新增和删除属性，vue3使用proxy， new proxy()，监听的是整个整个对象，产生的是一个新的对象
+2. vue2中v-for层级更高,vue3中v-if层级更高
+3. 插槽写法不一样,vue3是#slot
+4. 定义全局变量不一样
 
 ### vue双向绑定的原理|vue相应式原理
 * 数据劫持，通过object.definepropoty这个方法，遍历data每个数据，进行数据劫持， 里面有setter和getter函数，当数据发生变化时，会通过，setter函数会通知依赖收集器，而这个依赖收集器通知订阅该属性的watch
@@ -80,3 +82,12 @@
 1. webpack：所有模块都进行编译
 2. vite：启动的时候不需要打包，因为浏览器本身支持ES Modules，碰到一个impiort就会发送一个http请求去加载文件,并在后端进行简单的分解和整合返回给浏览器,vite在整个过程中没有对文件进行编译打包,真正做到按需加载，底层上是基于es build进行预构建的，es build是通过go语言编写的，比js快
 
+### vue优化
+1. v-for时,key尽量使用特定的id,diff算法可以减少判断
+2. 第三方插件按需引入
+3. 图片懒加载,压缩图片,使用精灵图,避免使用大图片
+4. 长列表展示可以采取虚拟滚动,只展示可视区域的数据,vue-virtual-scroller / vue-virtual-scroll-list
+5. vue2中,v-for比v-if的层级更高,需要注意下
+6. webpack开启压缩,gzip
+7. 减少http请求,优化请求
+8. 合理使用缓存

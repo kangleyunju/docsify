@@ -5,6 +5,7 @@
 - [vue](views/vue.md)
 - [react](views/react.md)
 - [node](views/node.md)
+- [uniapp](views/uniapp.md)
 - [typescript](views/typescript.md)
 - [描述](views/desc.md)
 - [文章](views/article.md)

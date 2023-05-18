@@ -181,6 +181,14 @@ console.log(aa)//[5,2,3]
 3. 新增了promise对象，实际上是一个构造函数，一个promise对象就是一个异步操作，立即执行，解决了回调地狱的问题，es7新增了async await
 4. 新增了模块化，import导入，export导出
 
+### const
+const定义的变量是不可重新赋值的，但对于复合类型，可以更改其属性或元素的值。
+```
+const arr = [1, 2, 3];
+arr[0] = 4; // 可以更改元素值
+console.log(arr); // 输出：[4, 2, 3]
+```
+
 ### 闭包
 * 闭包就是能够读取其他函数内部变量的函数称为闭包
 * 闭包的内存占用是不会释放的，如果滥用闭包，会造成内存泄漏
@@ -355,3 +363,44 @@ request(log)
 2. 大小,cookie只能存储4kb,session和localStorage可以存更多
 3. 安全,cookie更加安全,session和localStorage数据保留在浏览器中容易被劫持
 4. cookie适用于服务器会话token,session和localStorage用于存储临时数据
+
+### 宏任务微任务
+js是单线程的,任务按顺序一个一个的执行，但是一个任务耗时太长,那么后面的任务就需要等待，为了解决这种情况，将任务分为了同步任务和异步任务,而异步任务又可以分为微任务和宏任务,先执行微任务再执行宏任务
+* 宏任务
+1. setTimeout 
+2. setInterval 
+3. setImmediate node环境
+4. requestAnimationFrame 
+
+* 微任务
+1. Promise.then catch finally
+2. MutationObserver 
+3. process.nextTick  node环境
+
+### js事件循环
+JavaScript事件循环是JavaScript运行时环境中的一种执行机制，用于处理用户交互、网络请求、计时器和其他异步操作。js单线程的,当JavaScript遇到异步代码时，例如发起一个网络请求或通过setTimeout()函数设置一个计时器，它将被添加到事件队列中等待执行。一旦主线程完成当前任务并且事件队列中有待处理的任务，事件循环将取出下一个任务并将其推入主线程中执行。这个过程不断重复，直到所有任务都被处理完毕。
+
+js事件委托
+利用事件冒泡委托到父元素
+好处是代码简洁,减少内存占用,动态绑定事件
+
+```
+console.log(await(fn1()))
+console.log(1)
+setTimeout(()=>{console.log('setTimeout')})
+new Promise(()=>{ console.log('Promise')})
+console.log(2)
+async function fn1(){
+  return 123
+}
+```
+
+### 箭头函数和普通函数区别
+1. 箭头函数是匿名函数,更加简洁
+2. 箭头函数的this继承的最近一层this
+3. 箭头函数不能使用bind,apply,call改变this指向
+4. 箭头函数不能作为构造函数,也就是不能new function
+
+
+
+

@@ -7,6 +7,9 @@ pc，h5
 ### 技术栈
 docsify
 
+### 作者
+[kangle](https://github.com/kangleyunju/)
+
 ### 邮箱
 有问题可以提Issue，或者发邮件：249042680@qq.com，觉得不错可以点个赞
 
