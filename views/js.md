@@ -338,6 +338,11 @@ new Promise((resolve,reject) => {
 })
 ```
 
+### promise 的三个状态
+* 初始态 pending
+* 成功 resolved/fulfilled
+* 失败 rejected
+
 ### callback
 * callback回调通常用来描述一种函数调用方式，这种方式是将函数作为另一个函数的参数，以便在另一个函数完成后被调用执行
 * Promise 可以更轻松地处理异步代码中的错误和异常，catch捕捉错误，还提供了promise.all来处理多个异步操作
@@ -401,6 +406,30 @@ async function fn1(){
 3. 箭头函数不能使用bind,apply,call改变this指向
 4. 箭头函数不能作为构造函数,也就是不能new function
 
+### set,weakSet和map
+* set,es6新增的数据结构,类似数组,其中的值没有重复,通过构造函数生成set数据结构
+* 方法有add(),delete(),has(),clear(),keys(),values()
+```
+const set=new Set();
+[8, 2, 3, 4, 3, 2, 1].forEach(x => set.add(x));
+console.log(...set)//8 2 3 4 1
+```
 
 
+* map 键值对的结构
+* 方法有set(),get(),has(),delete(),clear(),keys(),values()
+```
+const map=new Map();
+map.set('a',1);
+map.set('b',{name:'mayun'});
+console.log(map);
+```
 
+* WeakMap 弱引用对象,只能使用对象作为键值对的键
+* 方法有set(),get(),has(),delete()
+```
+const objKey = {};// 创建一个对象作为键
+const weakMap=new WeakMap();
+weakMap.set(objKey,{name:'mayun'});
+console.log(weakMap.get(objKey));
+```

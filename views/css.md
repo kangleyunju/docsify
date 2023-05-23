@@ -67,3 +67,9 @@ BFC就是Block Formatting Context的缩写，当元素开启BFC属性之后，�
 <li>1</li><li>2</li>
 </ul>
 ```
+
+### sass,less,stylus区别
+* css预处理器,都可以嵌套使用
+* scss 使用$定义变量
+* less 使用@定义变量
+* stylus变量不限制,可以不带{}和;

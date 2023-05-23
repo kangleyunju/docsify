@@ -4,6 +4,27 @@
 3. 插槽写法不一样,vue3是#slot
 4. 定义全局变量不一样
 
+
+### vue生命周期
+* 通过keep-alive缓存的组件,还有 activated deactivated
+
+|										| Vue2					| vue3								|
+| ---								| ---						| ---									|
+| 创建前						| beforeCreate	| beforeCreate				|
+| 创建后						| created				| created							|
+| 挂载前						| beforeMount		| beforeMount					|
+| 挂载前组件实例化后|								| onBeforeMount (新)	|
+| 挂载后						| mounted				| mounted							|
+| 更新前						| beforeUpdate	|											|
+| 更新后						| updated				| onUpdated (新)			|
+| 卸载前						|								| onBeforeUnmount (新)|
+| 卸载前						| beforeDestroy	| beforeUnmount				|
+| 卸载后						| destroyed			| unmounted						|
+| 组件显示					| activated			|											|
+| 组件隐藏					| deactivated		|											|
+
+
+
 ### vue双向绑定的原理|vue相应式原理
 * 数据劫持，通过object.definepropoty这个方法，遍历data每个数据，进行数据劫持， 里面有setter和getter函数，当数据发生变化时，会通过，setter函数会通知依赖收集器，而这个依赖收集器通知订阅该属性的watch
 * 发布者-订阅者模式， 结合虚拟dom技术， 这个观察者watch会通过diff算法，差异化算法，仅更新发生变化的部分，避免了全量更新产生的性能问题
@@ -80,7 +101,7 @@
 
 ### vite和webpack的区别
 1. webpack：所有模块都进行编译
-2. vite：启动的时候不需要打包，因为浏览器本身支持ES Modules，碰到一个impiort就会发送一个http请求去加载文件,并在后端进行简单的分解和整合返回给浏览器,vite在整个过程中没有对文件进行编译打包,真正做到按需加载，底层上是基于es build进行预构建的，es build是通过go语言编写的，比js快
+2. vite：启动的时候不需要打包，因为浏览器本身支持ES Modules，碰到一个impiort就会发送一个http请求去加载文件,并在后端进行简单的分解和整合返回给浏览器,vite在整个过程中没有对文件进行编译打包,真正做到按需加载，底层上是基于es build进行预构建，es build是通过go语言编写的，比js快,正式环境线上用到了rollup,打包体积更小,支持相对路径,使用到新的esmodel
 
 ### vue优化
 1. v-for时,key尽量使用特定的id,diff算法可以减少判断
@@ -91,3 +112,12 @@
 6. webpack开启压缩,gzip
 7. 减少http请求,优化请求
 8. 合理使用缓存
+
+### vue-loader
+解析vue文件的template、script 和 style,转成js,css,html
+
+### vue项目seo优化
+1. nuxt.js
+2. 设置mete标签,设置一些合理的title、description、keywords
+3. 创建一个站点地图,包行所有内容的XML文件,可以帮助搜索引擎了解你的网站,比如第三方库vue-sitemap
+4. img填写alt,增加图片的相关性
