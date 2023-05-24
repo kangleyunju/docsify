@@ -1,27 +1,27 @@
 ### Vue2和vue3的区别
-1. vue2使用到object.definepropoty， 通过遍历每一层的属性实现监听，直接改动原始对象，通过get和set函数，来设置和读取属性，但是不能监听对象新增和删除属性，vue3使用proxy， new proxy()，监听的是整个整个对象，产生的是一个新的对象
+1. vue2使用到object.definepropoty， 通过遍历每一层的属性实现监听，直接改动原始对象，通过get和set函数，来设置和读取属性，但是不能监听对象新增和删除属性，vue3使用es6的proxy， new proxy()，监听的是整个整个对象，当数据发生变化时进行视图更新
 2. vue2中v-for层级更高,vue3中v-if层级更高
 3. 插槽写法不一样,vue3是#slot
 4. 定义全局变量不一样
+5. 生命周期不一样
 
 
 ### vue生命周期
 * 通过keep-alive缓存的组件,还有 activated deactivated
 
-|										| Vue2					| vue3								|
-| ---								| ---						| ---									|
-| 创建前						| beforeCreate	| beforeCreate				|
-| 创建后						| created				| created							|
-| 挂载前						| beforeMount		| beforeMount					|
-| 挂载前组件实例化后|								| onBeforeMount (新)	|
-| 挂载后						| mounted				| mounted							|
-| 更新前						| beforeUpdate	|											|
-| 更新后						| updated				| onUpdated (新)			|
-| 卸载前						|								| onBeforeUnmount (新)|
-| 卸载前						| beforeDestroy	| beforeUnmount				|
-| 卸载后						| destroyed			| unmounted						|
-| 组件显示					| activated			|											|
-| 组件隐藏					| deactivated		|											|
+|					| Vue2					| vue3						|
+| ---			| ---						| ---							|
+| 创建前	| beforeCreate	| setup						|
+| 创建后	| created				| setup						|
+| 挂载前	| beforeMount		| onBeforeMount		|
+| 挂载后	| mounted				| onMounted				|
+| 更新前	| beforeUpdate	|onBeforeUpdate		|
+| 更新后	| updated				| onUpdated				|
+| 卸载前	| beforeDestroy	| onBeforeUnmount	|
+| 卸载后	| destroyed			| onUnmounted			|
+| 组件显示| activated			| onActiveted			|
+| 组件隐藏| deactivated		| onDeactivated		|
+| 捕获错误| errorCaptured	| onErrorCaptured	|
 
 
 
@@ -84,6 +84,15 @@
 ### vue3 setup
 1. 组合式api,更好的逻辑复用
 2. ref和reactive都是将非响应式的值转化成响应式对象,reactive可以包含多个属性
+```
+import {toRefs,reactive} from "vue"
+const data=reactive({
+	name:'张飞',
+	age:28
+})
+const dataToRefs=toRefs(data)
+return {...dataToRefs}
+```
 
 ### 微前端的优点
 1. 便于独立开发独立部署

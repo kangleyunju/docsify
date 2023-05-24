@@ -73,3 +73,9 @@ BFC就是Block Formatting Context的缩写，当元素开启BFC属性之后，�
 * scss 使用$定义变量
 * less 使用@定义变量
 * stylus变量不限制,可以不带{}和;
+
+### display
+flex,block,inline-block,inline,none,unset
+
+### position
+unset,inherit,absolute,relative,fixed,static,stycky
