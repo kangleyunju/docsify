@@ -17,6 +17,7 @@ function add(){
 parseInt(add(1,2)(3)(4))//10
 parseInt(add(1,2)(3)(4))//10
 ```
+
 ### js数据类型
 * 基本数据类型 string，number，boolen，undefined，null
 * 复杂数据类型 object
@@ -228,7 +229,8 @@ for (let i = 0; i < 5; i++) {
 3. 事件监听没有移除
 4. 过渡缓存，缓存没有清理一直保留在内存中
 
-### 防抖和节流
+### 防抖和节流5
+
 1. 防抖，用户停止操作后执行事件，input实时搜索
 ```
 function debounce(func, delay) {

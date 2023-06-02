@@ -2,13 +2,11 @@
 1. vue2使用到object.definepropoty， 通过遍历每一层的属性实现监听，直接改动原始对象，通过get和set函数，来设置和读取属性，但是不能监听对象新增和删除属性，vue3使用es6的proxy， new proxy()，监听的是整个整个对象，当数据发生变化时进行视图更新
 2. vue2中v-for层级更高,vue3中v-if层级更高
 3. 插槽写法不一样,vue3是#slot
-4. 定义全局变量不一样
+4. 定义全局变量不一样,vue2是Vue.prototype,vue3是app.config.globalProperties
 5. 生命周期不一样
-
+6. vue3可以没有根元素
 
 ### vue生命周期
-* 通过keep-alive缓存的组件,还有 activated deactivated
-
 |					| Vue2					| vue3						|
 | ---			| ---						| ---							|
 | 创建前	| beforeCreate	| setup						|
@@ -23,7 +21,8 @@
 | 组件隐藏| deactivated		| onDeactivated		|
 | 捕获错误| errorCaptured	| onErrorCaptured	|
 
-
+### vue父子组件生命周期顺序
+父beforeCreate-> 父create -> 子beforeCreate-> 子created -> 子mounted -> 父mounted
 
 ### vue双向绑定的原理|vue相应式原理
 * 数据劫持，通过object.definepropoty这个方法，遍历data每个数据，进行数据劫持， 里面有setter和getter函数，当数据发生变化时，会通过，setter函数会通知依赖收集器，而这个依赖收集器通知订阅该属性的watch
@@ -55,12 +54,6 @@
 * computed ：多个属性来确定一个值推荐computed ，通过return返回，会缓存，只要数据不发生变化，就使用缓存的数据，不支持异步
 * watch：一个值的变化引起一系列操作用watch，两个参数，分别是newval和oldval，另外可以深度监听，deep和立即监听immediately，可以异步，不会缓存 
 
-### vue生命周期
-* 创建前后，created
-* 挂载前后，mounted
-* 更新前后，updated，
-* 销毁前后，destroyed
-
 ### vuex
 状态管理工具，用途是集中管理所有的组件，实现组件之间的数据共享，是专门管理数据的工具
 1. state 保存数据
@@ -82,8 +75,8 @@
 
 
 ### vue3 setup
-1. 组合式api,更好的逻辑复用
-2. ref和reactive都是将非响应式的值转化成响应式对象,reactive可以包含多个属性
+1. 组合式api，更好的逻辑复用
+2. ref和reactive都是将非响应式的值转化成响应式对象，reactive可以包含多个属性，给每个对象都包一层 Proxy，通过 Proxy 监听属性的变化
 ```
 import {toRefs,reactive} from "vue"
 const data=reactive({
@@ -96,17 +89,17 @@ return {...dataToRefs}
 
 ### 微前端的优点
 1. 便于独立开发独立部署
-2. 可维护性更好,便于局部更新增量更新
-3. 技术兼容好,适用于不同框架
+2. 可维护性更好，便于局部更新增量更新
+3. 技术兼容好，适用于不同框架
 
 ### 微前端的缺点
-1. 子应用之间资源共享能力较差,代码总体积变大
+1. 子应用之间资源共享能力较差，代码总体积变大
 
 ### qiankuan的原理
-1. 应用加载：单页面single-spa解决了路由和应用入口的问题,但是没有解决应用加载的问题,qianKun利用import-html-entry这个库解决了应用加载,那么这个库的作用就是获取子应用里面的css,js放到html里面,将html作为入口文件,很好解决了js隔离,css隔离和应用通信的问题
-2. js隔离：import-html-entry,为每个子应用生成一个window的代理对象,防止子应用js全局污染
-3. css隔离：给每个根节点添加一个特殊属性,类似于scoped属性
-4. 应用通信：全局的globalState对象用来保存全局变量,通过setGlobalState修改变量,onGlobalStateChange监听变量
+1. 应用加载：单页面single-spa解决了路由和应用入口的问题，但是没有解决应用加载的问题，qianKun利用import-html-entry这个库解决了应用加载，那么这个库的作用就是获取子应用里面的css，js放到html里面，将html作为入口文件，很好解决了js隔离，css隔离和应用通信的问题
+2. js隔离：import-html-entry，为每个子应用生成一个window的代理对象，防止子应用js全局污染
+3. css隔离：给每个根节点添加一个特殊属性，类似于scoped属性
+4. 应用通信：全局的globalState对象用来保存全局变量，通过setGlobalState修改变量，onGlobalStateChange监听变量
 
 ### vite和webpack的区别
 1. webpack：所有模块都进行编译
@@ -130,3 +123,7 @@ return {...dataToRefs}
 2. 设置mete标签,设置一些合理的title、description、keywords
 3. 创建一个站点地图,包行所有内容的XML文件,可以帮助搜索引擎了解你的网站,比如第三方库vue-sitemap
 4. img填写alt,增加图片的相关性
+
+### webpack
+* loader本质上是一个函数，它的作用是将某个源码字符串转换成另一个源码字符串返回,如clean-log-loader去除打印
+* plugin是通过扩展webpack功能，加入自定义的构建行为,html-webpack-plugin: 自动生成页面
