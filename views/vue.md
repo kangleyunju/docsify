@@ -4,7 +4,7 @@
 3. 插槽写法不一样,vue3是#slot
 4. 定义全局变量不一样,vue2是Vue.prototype,vue3是app.config.globalProperties
 5. 生命周期不一样
-6. vue3可以没有根元素
+6. vue3可以没有根元素,可以没有template
 
 ### vue生命周期
 |					| Vue2					| vue3						|
@@ -101,9 +101,10 @@ return {...dataToRefs}
 3. css隔离：给每个根节点添加一个特殊属性，类似于scoped属性
 4. 应用通信：全局的globalState对象用来保存全局变量，通过setGlobalState修改变量，onGlobalStateChange监听变量
 
-### vite和webpack的区别
-1. webpack：所有模块都进行编译
-2. vite：启动的时候不需要打包，因为浏览器本身支持ES Modules，碰到一个impiort就会发送一个http请求去加载文件,并在后端进行简单的分解和整合返回给浏览器,vite在整个过程中没有对文件进行编译打包,真正做到按需加载，底层上是基于es build进行预构建，es build是通过go语言编写的，比js快,正式环境线上用到了rollup,打包体积更小,支持相对路径,使用到新的esmodel
+### vite，webpack，rollup的区别
+1. webpack：所有模块都进行编译，拥有庞大的插件生态系统
+2. vite：启动的时候不需要打包，因为浏览器本身支持ES Modules，碰到一个import就会发送一个http请求去加载文件,并在后端进行简单的分解和整合返回给浏览器,vite在整个过程中没有对文件进行编译打包,真正做到按需加载，底层上是基于es build进行预构建，es build是通过go语言编写的，比js快,正式环境线上用到了rollup,打包体积更小,支持相对路径,使用到新的esmodel
+3. rollup：在打包过程中使用静态分析，确定模块的依赖关系，这样可以更好地进行Tree Shaking，将所有的模块转换成ES6模块，然后将它们合并成一个文件，按需打包，消除未使用的代码，体积更小
 
 ### vue优化
 1. v-for时,key尽量使用特定的id,diff算法可以减少判断
@@ -120,10 +121,18 @@ return {...dataToRefs}
 
 ### vue项目seo优化
 1. nuxt.js
-2. 设置mete标签,设置一些合理的title、description、keywords
-3. 创建一个站点地图,包行所有内容的XML文件,可以帮助搜索引擎了解你的网站,比如第三方库vue-sitemap
-4. img填写alt,增加图片的相关性
+2. 设置mete标签,设置一些合理的title、descriptio开了                                                                         
+3. keywords关键字
+4. 创建一个站点地图,包行所有内容的XML文件,可以帮助搜索引擎了解你的网站,比如第三方库vue-sitemap
+5. img填写alt,增加图片的相关性
 
 ### webpack
 * loader本质上是一个函数，它的作用是将某个源码字符串转换成另一个源码字符串返回,如clean-log-loader去除打印
 * plugin是通过扩展webpack功能，加入自定义的构建行为,html-webpack-plugin: 自动生成页面
+
+### watch和watchEffect的区别
+* watchEffect会立即监听,watch需要immediately
+* watchEffect会根据其中的属性，自动监听其变化
+
+### vue中的data为什么是函数
+防止多个组件之间共用一个data,产生数据污染,采用函数形式,每次以函数形式返回一份新的data,这样就拥有自己的作用域

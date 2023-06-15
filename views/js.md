@@ -392,13 +392,30 @@ js事件循环是JavaScript运行时环境中的一种执行机制，用于处�
 
 ```
 console.log(await(fn1()))
-console.log(1)
-setTimeout(()=>{console.log('setTimeout')})
-new Promise(()=>{ console.log('Promise')})
 console.log(2)
+setTimeout(()=>{
+	console.log(3,'setTimeout')
+})
+this.$nextTick(()=>{
+	console.log(4,'nextTick')
+})
+new Promise(function(resolve){
+	console.log(5,'promise')
+	resolve()
+}).then(function(){
+	console.log(6,'promise')
+})
+console.log(7)
 async function fn1(){
-  return 123
+	return 1
 }
+1
+2
+5 promise
+7
+4 nextTick
+6 promise
+3 setTimeout
 ```
 
 ### 箭头函数和普通函数区别

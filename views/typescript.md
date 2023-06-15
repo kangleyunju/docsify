@@ -11,3 +11,36 @@ console.log(aa.msg)//符合TS的语法
 let bb: unknown = 123
 console.log(bb.msg)//Error，unknown不确定有底下有该属性
 ```
+
+### ts定义类型
+* 定义变量
+```
+let a: string | number = 1
+```
+* 定义数组
+```
+let arr:[string, number, boolean]
+arr=['a',1,true]
+```
+* 定义函数
+```
+function getInfo(a: string, b: number): string|number {
+	if(b>5){
+		return b
+	}else{
+		return a
+	}
+}
+console.log(getInfo('zs', 20));
+```
+* 函数参数未知个数
+```
+function fn(...args:number[]){
+	console.log(args)
+	let res=args.reduce((pre,cur)=>{
+		return pre+cur
+	},0)
+	console.log(res)
+}
+fn(1,2,3,4)
+```

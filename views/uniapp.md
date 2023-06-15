@@ -21,3 +21,8 @@ try {
 ### 安卓和苹果的区别
 1. 苹果有底部安全距离, 有些样式苹果不支持,比如css滤镜
 2. api：苹果没有短震动
+
+### 跳转方式
+* uni.switchTab
+* uni.navigateTo
+* uni.redirectTo
