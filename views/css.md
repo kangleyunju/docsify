@@ -6,11 +6,17 @@
 4. 父级下加一个空白的div，清除浮动clear: both
 
 ### 元素的BFC属性
-BFC就是Block Formatting Context的缩写，当元素开启BFC属性之后，这个元素就会变成一个独立的区域，它就不会影响到其他的元素，这样布局就不会混乱，开启BFC有：
+* BFC就是Block Formatting Context的缩写，块级格式化上下文,当元素开启BFC属性之后，这个元素就会变成一个独立的区域，它就不会影响到其他的元素，这样布局就不会混乱，开启BFC有：
 1. 设置元素浮动float（不推荐）
 2. display:inline-block（不推荐）
 3. overflow:hidden（推荐）
 4. 设置元素绝对定位（不推荐）
+
+### IFC,行内格式化上下文
+1. font-size
+2. line-height
+3. height
+4. vertical-aligin
 
 ### px，rem，em
 * px绝对单位，像素
@@ -25,6 +31,7 @@ BFC就是Block Formatting Context的缩写，当元素开启BFC属性之后，�
 ### css隐藏元素的方法
 * overflow:hidden
 * opcity:0
+* visibility: hidden;
 * z-index:-1
 * width:0,height:0
 * display:none

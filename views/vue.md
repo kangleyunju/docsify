@@ -55,7 +55,7 @@
 * watch：一个值的变化引起一系列操作用watch，两个参数，分别是newval和oldval，另外可以深度监听，deep和立即监听immediately，可以异步，不会缓存 
 
 ### vuex
-状态管理工具，用途是集中管理所有的组件，实现组件之间的数据共享，是专门管理数据的工具
+状态管理工具，用途是集中管理所有的组件，实现组件之间的数据共享，是专门管理数据的工具，保存在运行内存里面
 1. state 保存数据
 2. mutation 改变数据的方法，同步  this.$store.commit(方法名，提交的数据)，触发mutation就意味新的状态的更新，如果mutatiuon是异步的就不知道状态何时变更
 3. action 改变数据，异步，然后分发mutation进行操作，this.$store.dispatch(方法名，提交的数据)，api调用，setTimeout等，
@@ -121,7 +121,7 @@ return {...dataToRefs}
 
 ### vue项目seo优化
 1. nuxt.js
-2. 设置mete标签,设置一些合理的title、descriptio开了                                                                         
+2. 设置mete标签,设置一些合理的title、description                                                                     
 3. keywords关键字
 4. 创建一个站点地图,包行所有内容的XML文件,可以帮助搜索引擎了解你的网站,比如第三方库vue-sitemap
 5. img填写alt,增加图片的相关性
@@ -133,6 +133,23 @@ return {...dataToRefs}
 ### watch和watchEffect的区别
 * watchEffect会立即监听,watch需要immediately
 * watchEffect会根据其中的属性，自动监听其变化
+```
+watch(
+  () => number.count,
+  (newValue, oldValue) => {
+    console.log("新的值:", newValue);
+    console.log("旧的值:", oldValue);
+  },
+  { deep: true }
+)
+watchEffect(()=>{
+  console.log("新的值:", number.count);
+})
+```
 
 ### vue中的data为什么是函数
 防止多个组件之间共用一个data,产生数据污染,采用函数形式,每次以函数形式返回一份新的data,这样就拥有自己的作用域
+
+### history和hash的区别
+1. hash在路由里面有#
+2. history刷新后会404,需要后端配置
